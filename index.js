@@ -6,7 +6,13 @@ var app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const { USER, PASS } = process.env
+const { USER, PASS, PORT } = process.env
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); 
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 
 
@@ -50,6 +56,6 @@ app.post('/', function (req, res) {
 });
 
 
-app.listen(3004, function () {
-console.log('Example app listening on port 3004!');
+app.listen(PORT, function () {
+console.log('Listening on port 3004!');
 });
