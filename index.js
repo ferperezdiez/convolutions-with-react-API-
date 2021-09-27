@@ -45,7 +45,7 @@ app.post('/', function (req, res) {
 
     newTransport.sendMail(mailOptions, (error)=>{
       if(error)
-        res.send('mail error',error)
+        res.send(error)
       else res.send('success')
     })
     newTransport.close()
