@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 app.post('/', function (req, res) {
 
     const data = req.body.mail;
+    res.send(data)
     const newTransport = nodemailer.createTransport({
       service: 'Gmail',
       port: 465,
