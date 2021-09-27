@@ -19,7 +19,6 @@ app.use((req, res, next) => {
 app.post('/', function (req, res) {
 
     const data = req.body.mail;
-    res.send(data)
     const newTransport = nodemailer.createTransport({
       service: 'Gmail',
       port: 465,
@@ -46,7 +45,7 @@ app.post('/', function (req, res) {
 
     newTransport.sendMail(mailOptions, (error)=>{
       if(error)
-        res.send(error)       
+        res.send('mail error',error)
       else res.send('success')
     })
     newTransport.close()
