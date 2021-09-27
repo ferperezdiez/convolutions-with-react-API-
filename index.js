@@ -36,10 +36,7 @@ app.post('/', function (req, res) {
         <h3>Aca toy</h3>
       `,
       
-      attachments: [{
-        filename: 'resume.PDF',
-        path: './resume.PDF'
-      }]
+      
 
     }
 
