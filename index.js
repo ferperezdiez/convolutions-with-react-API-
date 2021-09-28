@@ -37,9 +37,8 @@ app.post('/', function (req, res) {
       `,
       
       attachments: [{
-        filename: 'resume.PDF',
-        path: './resume.PDF',
-        cid: "fpdResume@node"
+        filename: 'resume.pdf',
+        path: './resume.pdf'
       }]
 
     }
