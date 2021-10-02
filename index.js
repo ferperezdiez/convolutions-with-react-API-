@@ -18,37 +18,59 @@ app.use((req, res, next) => {
 
 app.post('/', function (req, res) {
 
-    const data = req.body.mail;
-    const newTransport = nodemailer.createTransport({
-      service: 'Gmail',
-      port: 465,
-      auth:{
-        user: USER,
-        pass: PASS
-      }
-    })
-
-    let mailOptions = {
-      from: 'fernandoperezdiez.resume@gmail.com',
-      to: data,
-      subject: 'llego',
-      html: `
-        <h3>Aca toy</h3>
-      `,
-      
-      attachments: [{
-        filename: 'resume.pdf',
-        path: './resume.pdf'
-      }]
-
+  const data = req.body.mail;
+  const newTransport = nodemailer.createTransport({
+    service: 'Gmail',
+    port: 465,
+    auth:{
+      user: USER,
+      pass: PASS
     }
+  })
+  if(!req.body.text){
+    const data = req.body.mail;
+      let mailOptions = {
+        from: 'fernandoperezdiez.resume@gmail.com',
+        to: data,
+        subject: 'llego',
+        html: `
+          <h3>Aca toy</h3>
+        `,
+        
+        attachments: [{
+          filename: 'resume.pdf',
+          path: './resume.pdf'
+        }]
 
-    newTransport.sendMail(mailOptions, (error)=>{
-      if(error)
-        res.send(error)
-      else res.send('success')
-    })
-    newTransport.close()
+      }
+
+      newTransport.sendMail(mailOptions, (error)=>{
+        if(error)
+          res.send(error)
+        else res.send('success')
+      })
+      newTransport.close()
+    } else {
+   
+      const mail = req.body.mail;
+      const suggestion = req.body.text;
+      let mailOptions = {
+        from: 'fernandoperezdiez.resume@gmail.com',
+        to: 'perezdiezf@gmail.com',
+        subject: 'Suggestion',
+        html: `
+          <p>Recibiste la siguiente sugerencia de ${mail}: ${suggestion}</p>
+        `
+      }
+
+      newTransport.sendMail(mailOptions, (error)=>{
+        if(error)
+          res.send(error)
+        else res.send('success')
+      })
+      newTransport.close()
+
+  }
 
 
 
