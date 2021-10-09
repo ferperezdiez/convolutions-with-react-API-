@@ -32,9 +32,10 @@ app.post('/', function (req, res) {
       let mailOptions = {
         from: 'fernandoperezdiez.resume@gmail.com',
         to: data,
-        subject: 'llego',
+        subject: 'Full Stack Developer || Fernando Perez Diez',
         html: `
-          <h3>Aca toy</h3>
+          <h3>Thank you for received my resume! </3>
+          <h3>Have a nice day!</h3>
         `,
         
         attachments: [{
